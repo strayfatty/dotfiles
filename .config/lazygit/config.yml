@@ -1,0 +1,13 @@
+gui:
+  mainPanelSplitMode: 'vertical'
+  nerdFontsVersion: "3"
+
+quitOnTopLevelReturn: false
+
+os:
+  edit: nvim --server /tmp/nvim-server.pipe --remote-send "<cmd>lua require('tm.core.scripts.lazygit-open-file')('{{filename}}', '1')<CR>"
+  editAtLine: nvim --server /tmp/nvim-server.pipe --remote-send "<cmd>lua require('tm.core.scripts.lazygit-open-file')('{{filename}}', '{{line}}')<CR>"
+  open: nvim --server /tmp/nvim-server.pipe --remote-send "<cmd>lua require('tm.core.scripts.lazygit-open-file')('{{filename}}', '1')<CR>"
+
+disableStartupPopups: true
+notARepository: "skip"

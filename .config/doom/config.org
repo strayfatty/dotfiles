@@ -1,0 +1,178 @@
+#+TITLE: Emacs Configuration
+#+STARTUP: overview
+#+PROPERTY: header-args:emacs-lisp      :tangle "./config.el" :results silent
+
+* Startup Performance
+Make startup faster by reducing the frequency of garbage collection and then use a hook to measure Emacs starup time.
+#+begin_src emacs-lisp
+;; The default is 800 kilobytes. Measured in bytes.
+(setq gc-cons-threshold (* 500 1024 1024)) ;; 500mb
+
+;;Increase the amount of data which Emacs reads from the process
+(setq read-process-output-max (* 5 1024 1024)) ;; 5mb
+
+;; Profile emacs startup
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "*** Emacs loaded in %s with %d garbage collections"
+                     (format "%.2f seconds"
+                             (float-time
+                              (time-subtract after-init-time before-init-time)))
+                     gcs-done)))
+#+end_src
+* Completion
+#+begin_src emacs-lisp
+(setq completion-ignore-case t)
+#+end_src
+* Doom
+** Theme
+There are two ways to load a theme. Both assume the theme is installed and available. You can either set `doom-theme' or manually load a theme with the `load-theme' function.
+#+BEGIN_SRC emacs-lisp
+(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-shades-of-purple)
+;; (setq doom-theme 'doom-solarized-dark)
+#+END_SRC
+** Font
+Doom exposes five (optional) variables for controlling fonts in Doom. Here are the three important ones:
+- `doom-font'
+- `doom-variable-pitch-font'
+- `doom-big-font' -- used for `doom-big-font-mode'; use this for presentations or streaming.
+
+They all accept either a font-spec, font string ("Input Mono-12"), or xlfd font string. You generally only need these two:
+(setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light) doom-variable-pitch-font (font-spec :family "sans" :size 13))
+#+BEGIN_SRC emacs-lisp
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 14))
+#+END_SRC
+** Line Numbers
+This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
+#+BEGIN_SRC emacs-lisp
+(setq display-line-numbers-type 'relative)
+#+END_SRC
+** Additional functions/macros
+Here are some additional functions/macros that could help you configure Doom:
+- `load!' for loading external *.el files relative to this one
+- `use-package!' for configuring packages
+- `after!' for running code after a package has loaded
+- `add-load-path!' for adding directories to the `load-path', relative to this file. Emacs searches the `load-path' when you load packages with `require' or `use-package'.
+- `map!' for binding new keys
+
+To get information about any of these functions/macros, move the cursor over the highlighted symbol at press 'K' (non-evil users must press 'C-c c k'). This will open documentation for it, including demos of how they are used.
+
+You can also try 'gd' (or 'C-c c d') to jump to their definition and see how they are implemented.
+* Window
+Persist Emacs' initial frame position, dimension and/or full-screen state across sessions
+#+BEGIN_SRC emacs-lisp
+(when-let (dims (doom-store-get 'last-frame-size))
+  (cl-destructuring-bind ((left . top) width height fullscreen) dims
+    (setq initial-frame-alist
+          (append initial-frame-alist
+                  `((left . ,left)
+                    (top . ,top)
+                    (width . ,width)
+                    (height . ,height)
+                    (fullscreen . ,fullscreen))))))
+
+(defun save-frame-dimensions ()
+  (doom-store-put 'last-frame-size
+                  (list (frame-position)
+                        (frame-width)
+                        (frame-height)
+                        (frame-parameter nil 'fullscreen))))
+
+(add-hook 'kill-emacs-hook #'save-frame-dimensions)
+#+END_SRC
+* Ivy
+Use fuzzy search. (using ivy +fuzzy in init.el)
+** Prescient
+#+begin_src emacs-lisp
+(setq prescient-history-length 0)
+(setq prescient-filter-method '(anchored))
+(setq ivy-prescient-enable-filtering t)
+(setq ivy-prescient-enable-sorting t)
+#+end_src
+
+* Major-Modes
+Remap major modes to tree-sitter
+#+begin_src elisp
+(setq major-mode-remap-alist
+      '((css-mode . css-ts-mode)
+        (rust-mode . rust-ts-mode)))
+#+end_src
+* Org mode
+** Directory
+If you use `org' and don't want your org files in the default location below, change `org-directory'. It must be set before org loads!
+#+BEGIN_SRC emacs-lisp
+(setq org-directory "~/org/")
+(setq org-archive-location "~/org/archive")
+#+END_SRC
+
+** Capture templates
+#+BEGIN_SRC emacs-lisp
+(after! org (setq org-capture-templates
+      `(("t" "TODO" entry
+         (file+headline "~/org/Refile.org" "Inbox")
+         "* TODO %^{Brief description} %^g      \nAdded: %U  %i\n  %?\n"
+         :clock-in t :clock-resume t))))
+#+END_SRC
+
+** When done
+Add timestamp and note when done
+#+BEGIN_SRC emacs-lisp
+(setq org-log-done 'note)
+#+END_SRC
+** Clocktables
+*** Only print hours and minuts for time
+#+begin_src emacs-lisp
+(setq org-duration-format (quote h:mm))
+#+end_src
+* Keyboard
+** Ripgrep
+#+begin_src emacs-lisp
+(map! :leader
+      (:prefix ("r" . "ripgrep")
+       :desc "Project" "r" #'rg-project))
+#+end_src
+* LSP
+#+begin_src emacs-lisp
+(setq lsp-auto-execute-action nil)
+
+(setq lsp-javascript-preferences-import-module-specifier "non-relative")
+(setq lsp-typescript-preferences-import-module-specifier "non-relative")
+#+end_src
+* vertico-posframe
+#+begin_src emacs-lisp
+(vertico-posframe-mode 1)
+#+end_src
+* Utility Functions
+#+begin_src emacs-lisp
+(defun tm:open-eshell-at (path &optional name)
+  "Open eshell at specified path"
+  (interactive)
+  (eshell '(4))
+  (eshell-return-to-prompt)
+  (insert (concat "cd " path))
+  (eshell-send-input)
+  (if name (rename-buffer name)))
+
+(defun tm:load-config (file)
+  "Load config file"
+  (interactive)
+  (setq path (expand-file-name file "~/.config/doom/"))
+  (cond
+   ((file-exists-p path)
+    (load-file path))
+   (t (message "Loading %s... not found" path))))
+
+(defun tm:org-copy-cell-content ()
+  "Copy cell content from org table"
+  (interactive)
+  (when (org-at-table-p)
+    (kill-new
+     (string-trim
+      (substring-no-properties(org-table-get-field))))))
+#+end_src
+* Load Private Configuration
+Load private/machine specific configuration
+#+begin_src emacs-lisp
+(tm:load-config "config_private.el")
+#+end_src

@@ -1,0 +1,45 @@
+# Application shortcuts
+alt - 1 : open -a Emacs
+alt - 2 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.app=="Alacritty") | select(.title|test("^neovim$")) | .id')
+alt - 3 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select((.app=="Chromium") or (.app=="Godot")) | .id')
+alt - 4 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.app=="Alacritty") | select(.title|test("^.*lazygit.*$")) | .id')
+alt - 5 : open -a Azure\ Data\ Studio
+lalt - 9 : open -a Zen\ Browser
+lalt - 0 : yabai -m space --focus 7
+alt - c : open -n -a alacritty.app
+alt - n : open -n -a alacritty.app --args --title "neovim" -e zsh -ic "/opt/homebrew/bin/nvim --listen /tmp/nvim-server.pipe"
+alt - m : open -n -a alacritty.app --args --title "The Menu" -e zsh -ic "tm"
+alt - w : open -n -a "Windows App.app"
+
+# Window Navigation (through display borders): lalt - {h, j, k, l}
+alt - h : yabai -m window --focus west  || yabai -m space --focus prev
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east  || yabai -m space --focus next
+
+# Float / Unfloat window: lalt - space
+shift + alt - space : yabai -m window --toggle float
+
+# Make window zoom to fullscreen: shift + lalt - f
+shift + alt - f : yabai -m window --toggle zoom-fullscreen
+
+# Open emacs-everywhere
+shift + alt - e : emacsclient --eval '(emacs-everywhere)'
+
+# Moving windows between spaces: shift + lalt - {1, 2, 3, 4, 5, 6, 7, p, n }
+shift + alt - 1 : yabai -m window --space 1
+shift + alt - 2 : yabai -m window --space 2
+shift + alt - 3 : yabai -m window --space 3
+shift + alt - 4 : yabai -m window --space 4
+shift + alt - 5 : yabai -m window --space 5
+shift + alt - 6 : yabai -m window --space 6
+shift + alt - 7 : yabai -m window --space 7
+
+shift + alt - p : yabai -m window --space prev && yabai -m space --focus prev
+shift + alt - n : yabai -m window --space next && yabai -m space --focus next
+
+# Mirror Space along X and Y Axis: shift + lalt - {x, y}
+shift + alt - y : yabai -m space --mirror x-axis
+shift + alt - x : yabai -m space --mirror y-axis
+
+.load "skhdrc_private"
