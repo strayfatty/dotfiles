@@ -21,7 +21,7 @@
 
 (setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 14))
 
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type 'visual)
 
 (when-let (dims (doom-store-get 'last-frame-size))
   (cl-destructuring-bind ((left . top) width height fullscreen) dims
