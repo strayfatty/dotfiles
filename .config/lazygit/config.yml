@@ -2,6 +2,12 @@ gui:
   mainPanelSplitMode: 'vertical'
   nerdFontsVersion: "3"
 
+git:
+  mainBranches:
+    - master
+    - main
+    - develop
+
 quitOnTopLevelReturn: false
 
 os:
