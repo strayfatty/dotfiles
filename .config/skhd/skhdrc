@@ -3,13 +3,13 @@ alt - 1 : open -a Emacs
 alt - 2 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.app=="Alacritty") | select(.title|test("^neovim$")) | .id')
 alt - 3 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select((.app=="Chromium") or (.app=="Godot")) | .id')
 alt - 4 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select(.app=="Alacritty") | select(.title|test("^.*lazygit.*$")) | .id')
-alt - 5 : open -a Azure\ Data\ Studio
+alt - 5 : open -a Visual\ Studio\ Code
 lalt - 9 : open -a Zen\ Browser
 lalt - 0 : yabai -m space --focus 7
 alt - c : open -n -a alacritty.app
 alt - n : open -n -a alacritty.app --args --title "neovim" -e zsh -ic "/opt/homebrew/bin/nvim --listen /tmp/nvim-server.pipe"
 alt - m : open -n -a alacritty.app --args --title "The Menu" -e zsh -ic "tm"
-alt - w : open -n -a "Windows App.app"
+alt - w : open -a Windows\ App
 
 # Window Navigation (through display borders): lalt - {h, j, k, l}
 alt - h : yabai -m window --focus west  || yabai -m space --focus prev

@@ -64,7 +64,7 @@ yabai -m rule --add app="^JetBrains Rider$" title="Welcome to JetBrains Rider" s
 yabai -m rule --add app="^Alacritty$" title="neovim" space=^2
 yabai -m rule --add app="^Chromium$" space=^3
 yabai -m rule --add app="^Alacritty$" title="^.*lazygit.*$" space=^4
-yabai -m rule --add app="^Azure Data Studio$" space=^5
+yabai -m rule --add app="^Code$" space=^5
 yabai -m rule --add app="^Google Chrome$" space=^6
 yabai -m rule --add app="^Zen" space=^6
 yabai -m rule --add app="^Microsoft Teams" title!="Microsoft Teams Notification" space=7
