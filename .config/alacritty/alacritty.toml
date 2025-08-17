@@ -8,9 +8,6 @@ option_as_alt = "OnlyLeft"
 
 decorations = "Buttonless"
 
-opacity = 0.7
-blur = true
-
 [font]
 normal.family = "Hack Nerd Font Mono"
 size = 14

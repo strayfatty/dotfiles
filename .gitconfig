@@ -1,0 +1,9 @@
+[pull]
+	rebase = true
+
+[delta]
+	features = arctic-fox
+
+[include]
+	path = ./.config/delta/themes.gitconfig
+	path = ./.gitconfig_private
