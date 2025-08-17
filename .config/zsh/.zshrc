@@ -39,10 +39,6 @@ eval "$(oh-my-posh init zsh --config $XDG_CONFIG_HOME/oh-my-posh/zen.toml)"
 
 # keybinds (emacs-mode)
 bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^k' history-search-backward
-bindkey '^j' history-search-forward
 
 # completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
