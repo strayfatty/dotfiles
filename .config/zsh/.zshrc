@@ -17,7 +17,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # completions
-autoload -Uz compinit && compinit -d $HOME/.zcompdump
+autoload -Uz compinit && compinit -C -d $HOME/.zcompdump
 setopt noautomenu
 setopt nomenucomplete
 
