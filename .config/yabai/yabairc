@@ -81,3 +81,6 @@ yabai -m rule --add app="^Tuple$" space=^3
 yabai -m rule --add app="^Alacritty$" title="The Menu" manage=off grid=6:4:1:1:2:4
 
 yabai -m config layout bsp
+
+# load private configuration
+[ ! -f "$HOME/.config/yabai/yabairc_private" ] || source "$HOME/.config/yabai/yabairc_private"
