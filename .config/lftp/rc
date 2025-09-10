@@ -1,0 +1,5 @@
+# completion case insensitive
+set cmd:cls-completion-default -FBai
+
+# aliases
+alias lls !ls -hal
