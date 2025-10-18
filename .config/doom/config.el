@@ -51,10 +51,43 @@
 (setq org-archive-location "~/org/archive")
 
 (after! org (setq org-capture-templates
-      `(("t" "TODO" entry
-         (file+headline "~/org/Refile.org" "Inbox")
-         "* TODO %^{Brief description} %^g      \nAdded: %U  %i\n  %?\n"
-         :clock-in t :clock-resume t))))
+      '(("t" "Todo" entry
+         (file+headline "~/org/refile.org" "Inbox")
+         "* TODO %^{Task}
+:PROPERTIES:
+:CREATED: %U
+:END:
+%?")
+
+        ("e" "Event" entry
+         (file+headline "~/org/calendar.org" "Events")
+         "* %^{Event}\n%^{SCHEDULED}T\n:PROPERTIES:\n:CREATED: %U\n:CAPTURED: %a\n:CONTACT: %(org-capture-ref-link \"~/org/contacts.org\")\n:END:\n%?")
+
+        ("c" "Contact" entry
+         (file "~/org/contacts.org")
+         "* %^{Name}
+:PROPERTIES:
+:CREATED: %U
+:EMAIL: %^{Email}
+:PHONE: %^{Phone}
+:END:
+\\ *** Communications
+\\ *** Notes
+%?"))))
+
+;; Helper function to select and link a contact
+(defun org-capture-ref-link (file)
+  "Create a link to a contact in contacts.org"
+  (let* ((headlines (org-map-entries
+                     (lambda ()
+                       (cons (org-get-heading t t t t)
+                             (org-id-get-create)))
+                     t
+                     (list file)))
+         (contact (completing-read "Contact: "
+                                   (mapcar #'car headlines)))
+         (id (cdr (assoc contact headlines))))
+    (format "[[id:%s][%s]]" id contact)))
 
 (setq org-log-done 'note)
 
