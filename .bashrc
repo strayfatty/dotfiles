@@ -7,4 +7,4 @@ PS1='\W> '
 
 # ssh
 eval `ssh-agent` &>/dev/null
-ssh-add ~/.ssh/*.key
+ssh-add ~/.ssh/*.key &>/dev/null
