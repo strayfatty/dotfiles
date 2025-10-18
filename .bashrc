@@ -4,3 +4,6 @@
 alias ls='ls -la --color=auto'
 alias grep='grep --color=auto'
 PS1='\W> '
+
+# ssh
+eval `ssh-agent` &>/dev/null
