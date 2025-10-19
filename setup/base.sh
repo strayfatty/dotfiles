@@ -8,6 +8,7 @@ packages=(
     openssh
     vim
     base-devel
+    linux-headers
     nvidia-utils
     nvidia-dkms
     noto-fonts

@@ -10,6 +10,8 @@ packages=(
     emacs
     jq
     bat
+    htop
+    alacritty
 )
 
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"
