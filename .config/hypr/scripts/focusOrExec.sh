@@ -54,7 +54,7 @@ pid=$(hyprctl -j clients | jq -r ".[] | select(${FILTER}) | .pid")
 
 if [[ $pid != "" ]]
 then
-    hyprctl dispatch focuswindow pid:$pid
+    hyprctl dispatch focuswindow "pid:$pid"
 else
-    hyprctl dispatch exec $APPLICATION
+    hyprctl dispatch exec "$APPLICATION"
 fi

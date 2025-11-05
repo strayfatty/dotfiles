@@ -48,7 +48,7 @@ pid=$(hyprctl -j clients | jq -r ".[] | select(${FILTER}) | .pid")
 
 if [[ $pid != "" ]]
 then
-    hyprctl dispatch focuswindow $CLIENT_REF
+    hyprctl dispatch focuswindow "$CLIENT_REF"
 else
-    hyprctl dispatch -- exec $BROWSER --app="${APPLICATION}"
+    hyprctl dispatch -- exec "$BROWSER" --app="${APPLICATION}"
 fi
