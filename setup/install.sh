@@ -30,7 +30,7 @@ aurPackages=(
 )
 yay -Syu --noconfirm --needed "${aurPackages[@]}"
 
-# dark theme for gtk applications (pvaucontrol)
+# dark theme for gtk applications (pavucontrol)
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
 
