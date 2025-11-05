@@ -51,5 +51,5 @@
 
 (package! rg)
 (package! orgtbl-aggregate)
-(package! vertico-posframe)
+;; (package! vertico-posframe)
 (package! org-clock-csv)

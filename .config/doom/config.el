@@ -102,7 +102,7 @@
 (setq lsp-javascript-preferences-import-module-specifier "non-relative")
 (setq lsp-typescript-preferences-import-module-specifier "non-relative")
 
-(vertico-posframe-mode 1)
+;; (vertico-posframe-mode 1)
 
 (defun tm:open-eshell-at (path &optional name)
   "Open eshell at specified path"

@@ -174,7 +174,7 @@ Add timestamp and note when done
 #+end_src
 * vertico-posframe
 #+begin_src emacs-lisp
-(vertico-posframe-mode 1)
+;; (vertico-posframe-mode 1)
 #+end_src
 * Utility Functions
 #+begin_src emacs-lisp
