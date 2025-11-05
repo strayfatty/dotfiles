@@ -19,7 +19,7 @@
 ;; (setq doom-theme 'doom-shades-of-purple)
 ;; (setq doom-theme 'doom-solarized-dark)
 
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 14))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 18))
 
 (setq display-line-numbers-type 'visual)
 
