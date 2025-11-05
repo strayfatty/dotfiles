@@ -4,6 +4,7 @@
 packages=(
     less                # used by man
     man
+    procps
     git
     openssh
     vim
@@ -12,6 +13,8 @@ packages=(
     nvidia-utils
     nvidia-dkms
     noto-fonts
+    noto-fonts-cjk 
+    noto-fonts-emoji
     ttf-hack-nerd
     hyprland
     hyprpaper 

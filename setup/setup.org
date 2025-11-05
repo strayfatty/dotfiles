@@ -1,0 +1,30 @@
+#+title: Setup
+
+* Configure Pacman
+Enable multilib support by uncommenting the following two lines in '/etc/pacman.conf'
+#+begin_src shell
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+#+end_src
+* Configure DNS
+Check current DNS server (under Global) with `resolvectl`
+#+begin_src shell
+resolvectl
+#+end_src
+If home DNS server is not set create the following file (and folder)
+#+begin_src shell
+sudo mkdir /etc/systemd/resolved.conf.d
+sudo cat > /etc/systemd/resolved.conf.d/dns_servers.conf << EOF
+[Resolve]
+DNS=192.168.178.40
+Domains=~.
+EOF
+#+end_src
+* Generate SSH key
+:PROPERTIES:
+:header-args:shell: :var COMMENT=(read-string "Comment (mclee@archibald): " nil nil "mclee@archibald")
+:header-args:shell+: :var PASSWORD=(read-passwd "Password: " t)
+:END:
+#+begin_src shell
+ssh-keygen -t ed25519 -C $COMMENT -f ~/.ssh/${COMMENT}.key -N "$PASSWORD"
+#+end_src
