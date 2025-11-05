@@ -13,7 +13,7 @@ packages=(
     nvidia-utils
     nvidia-dkms
     noto-fonts
-    noto-fonts-cjk 
+    noto-fonts-cjk
     noto-fonts-emoji
     ttf-hack-nerd
     hyprland
