@@ -32,12 +32,12 @@ APPLICATION=${POSITIONAL_ARGS[0]}
 
 if [[ $FILTER == "" ]]; then
    echo "no filter specified"
-   exit
+   exit 1
 fi
 
 if [[ $APPLICATION == "" ]]; then
    echo "no application specified"
-   exit
+   exit 1
 fi
 
 # echo "filter: $TITLE"
