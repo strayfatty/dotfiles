@@ -40,13 +40,13 @@ if [[ $APPLICATION == "" ]]; then
    exit 1
 fi
 
-# echo "filter: $TITLE"
+# echo "filter: $FILTER"
 # echo "app: $APPLICATION"
 
-pid=$(hyprctl -j clients | jq -r ".[] | select(${FILTER}) | .pid")
+pid=$(hyprctl -j clients | jq -r "[.[] | select(${FILTER}) | .pid] | first")
 # echo "pid: ${pid}"
 
-if [[ $pid != "" ]]
+if [[ ($pid != "") && ($pid != "null") ]]
 then
     hyprctl dispatch focuswindow "$CLIENT_REF"
 else
