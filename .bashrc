@@ -28,6 +28,6 @@ source "$HOME/.cargo/env"
 # fnm
 FNM_PATH="/home/mclee/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
+    export PATH="$FNM_PATH:$PATH"
+    eval "`fnm env`"
 fi
