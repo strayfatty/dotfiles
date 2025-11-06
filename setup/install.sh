@@ -36,8 +36,8 @@ yay -Syu --noconfirm --needed "${aurPackages[@]}"
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
 
-if [ ! -d ~/projects/strayfatty/chrome_extensions ]; then
+if [ ! -d ~/projects/chrome_extensions ]; then
 # fetch extension for helium-browser
-    mkdir -p ~/projects/strayfatty
-    git clone http://chanko.de:3000/tulka/chrome_extensions.git ~/projects/strayfatty/chrome_extensions
+    mkdir -p ~/projects
+    git clone https://github.com/strayfatty/chrome_extensions.git ~/projects/chrome_extensions
 fi
