@@ -19,7 +19,7 @@
 ;; (setq doom-theme 'doom-shades-of-purple)
 ;; (setq doom-theme 'doom-solarized-dark)
 
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 14))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 18))
 
 (setq display-line-numbers-type 'visual)
 
@@ -102,7 +102,7 @@
 (setq lsp-javascript-preferences-import-module-specifier "non-relative")
 (setq lsp-typescript-preferences-import-module-specifier "non-relative")
 
-(vertico-posframe-mode 1)
+;; (vertico-posframe-mode 1)
 
 (defun tm:open-eshell-at (path &optional name)
   "Open eshell at specified path"

@@ -41,7 +41,7 @@ Doom exposes five (optional) variables for controlling fonts in Doom. Here are t
 They all accept either a font-spec, font string ("Input Mono-12"), or xlfd font string. You generally only need these two:
 (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light) doom-variable-pitch-font (font-spec :family "sans" :size 13))
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 14))
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 18))
 #+END_SRC
 ** Line Numbers
 This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
@@ -174,7 +174,7 @@ Add timestamp and note when done
 #+end_src
 * vertico-posframe
 #+begin_src emacs-lisp
-(vertico-posframe-mode 1)
+;; (vertico-posframe-mode 1)
 #+end_src
 * Utility Functions
 #+begin_src emacs-lisp

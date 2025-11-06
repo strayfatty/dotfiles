@@ -1,28 +1,24 @@
 #!/usr/bin/env bash
 
-FILTER_ARGS=()
+BROWSER=helium-browser
 POSITIONAL_ARGS=()
 
 while [[ $# -gt 0 ]]; do
     case $1 in
-        -c|--class)
-            FILTER_ARGS+=("(.class == \"$2\")")
-            shift
-            shift
-            ;;
-        -C|--initialClass)
-            FILTER_ARGS+=("(.initialClass == \"$2\")")
-            shift
-            shift
-            ;;
         -t|--title)
-            FILTER_ARGS+=("(.title == \"$2\")")
+            FILTER=".title == \"$2\""
+            CLIENT_REF="title:$2"
             shift
             shift
             ;;
-        -T|--initialTitle)
-            FILTER_ARGS+=("(.initialTitle == \"$2\")")
+        -c|--class)
+            FILTER=".class == \"$2\""
+            CLIENT_REF="class:$2"
             shift
+            shift
+            ;;
+        --chrome)
+            BROWSER=google-chrome-stable
             shift
             ;;
         *)
@@ -32,8 +28,6 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-FILTERSTR=$(printf " and %s" "${FILTER_ARGS[@]}")
-FILTER=${FILTERSTR:5}
 APPLICATION=${POSITIONAL_ARGS[0]}
 
 if [[ $FILTER == "" ]]; then
@@ -54,7 +48,7 @@ pid=$(hyprctl -j clients | jq -r "[.[] | select(${FILTER}) | .pid] | first")
 
 if [[ ($pid != "") && ($pid != "null") ]]
 then
-    hyprctl dispatch focuswindow "pid:$pid"
+    hyprctl dispatch focuswindow "$CLIENT_REF"
 else
-    hyprctl dispatch exec "$APPLICATION"
+    hyprctl dispatch -- exec "$BROWSER" --app="${APPLICATION}"
 fi

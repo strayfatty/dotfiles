@@ -1,0 +1,42 @@
+#+title: Setup
+
+* Configure Pacman
+Enable multilib support by uncommenting the following two lines in '/etc/pacman.conf'
+#+begin_src bash
+[multilib]
+Include = /etc/pacman.d/mirrorlist
+#+end_src
+* Configure DNS
+Check current DNS server (under Global) with `resolvectl`
+#+begin_src bash
+resolvectl
+#+end_src
+If home DNS server is not set create the following file (and folder)
+#+begin_src bash
+sudo mkdir /etc/systemd/resolved.conf.d
+sudo cat > /etc/systemd/resolved.conf.d/dns_servers.conf << EOF
+[Resolve]
+DNS=192.168.178.40
+Domains=~.
+EOF
+#+end_src
+* Generate SSH key
+:PROPERTIES:
+:header-args:shell: :var COMMENT=(read-string "Comment (mclee@archibald): " nil nil "mclee@archibald")
+:header-args:shell+: :var PASSWORD=(read-passwd "Password: " t)
+:END:
+#+begin_src shell
+ssh-keygen -t ed25519 -C $COMMENT -f ~/.ssh/${COMMENT}.key -N "$PASSWORD"
+#+end_src
+* User Local Tools
+** rustup
+URL: https://rustup.rs/
+#+begin_src bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+#+end_src
+** node (see fnm)
+** fnm
+URL: https://github.com/Schniz/fnm
+#+begin_src bash
+curl -fsSL https://fnm.vercel.app/install | bash
+#+end_src
