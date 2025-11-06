@@ -18,6 +18,7 @@ packages=(
     pavucontrol     # audio control
     waybar
     keepassxc
+    pnpm
 )
 
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"
@@ -27,6 +28,7 @@ aurPackages=(
     helium-browser-bin
     google-chrome
     goxlr-utility
+    oh-my-posh-bin
 )
 yay -Syu --noconfirm --needed "${aurPackages[@]}"
 
