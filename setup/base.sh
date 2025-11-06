@@ -24,7 +24,7 @@ packages=(
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"
 
 # install yay
-if ! command -v yay > /dev/null 2&>1; then
+if ! command -v yay > /dev/null 2>&1; then
     yayDir=yay_temp
     git clone https://aur.archlinux.org/yay.git $yayDir
     pushd $yayDir

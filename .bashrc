@@ -8,7 +8,7 @@ alias ls='ls -la --color=auto'
 alias grep='grep --color=auto'
 PS1='\W> '
 
-# cutomize prompt
+# customize prompt
 eval "$(oh-my-posh init bash --config $XDG_CONFIG_HOME/oh-my-posh/zen.toml)"
 
 # ssh
@@ -23,11 +23,13 @@ fi
 ssh-add -t 8h $HOME/.ssh/*.key &>/dev/null
 
 # cargo/rust
-source "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
+fi
 
 # fnm
-FNM_PATH="/home/mclee/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
     export PATH="$FNM_PATH:$PATH"
-    eval "`fnm env`"
+    eval "$(fnm env)"
 fi
