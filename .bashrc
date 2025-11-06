@@ -9,7 +9,7 @@ alias grep='grep --color=auto'
 PS1='\W> '
 
 # customize prompt
-eval "$(oh-my-posh init bash --config $XDG_CONFIG_HOME/oh-my-posh/zen.toml)"
+eval "$(oh-my-posh init bash --config "$XDG_CONFIG_HOME/oh-my-posh/zen.toml")"
 
 # ssh
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
@@ -18,7 +18,7 @@ fi
 
 if [ ! -S "$SSH_AUTH_SOCK" ]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-fi 
+fi
 
 ssh-add -t 8h $HOME/.ssh/*.key &>/dev/null
 
