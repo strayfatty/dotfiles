@@ -15,7 +15,7 @@ packages=(
     htop            # Interactive process viewer
     alacritty       # A cross-platform, GPU-accelerated terminal emulator
     stow            # Manage installation of multiple softwares in the same directory tree
-    pavucontrol     # PulseAudio Volume Control
+    wiremix         # A simple TUI audio mixer for PipeWire
     waybar          # Highly customizable Wayland bar for Sway and Wlroots based compositors
     keepassxc       # Cross-platform community-driven port of Keepass password manager
     pnpm            # Fast, disk space efficient package manager
@@ -31,10 +31,6 @@ aurPackages=(
     oh-my-posh-bin      # A prompt theme engine for any shell.
 )
 yay -Syu --noconfirm --needed "${aurPackages[@]}"
-
-# dark theme for gtk applications (pavucontrol)
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-gsettings set org.gnome.desktop.interface gtk-theme Adwaita-dark
 
 if [ ! -d ~/projects/chrome_extensions ]; then
 # fetch extension for helium-browser
