@@ -4,7 +4,7 @@
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 
-alias ls='ls -la --color=auto'
+alias ls='ls -hal --group-directories-first --color=auto'
 alias grep='grep --color=auto'
 PS1='\W> '
 
@@ -33,3 +33,10 @@ if [ -d "$FNM_PATH" ]; then
     export PATH="$FNM_PATH:$PATH"
     eval "$(fnm env)"
 fi
+
+# pnpm
+export PNPM_HOME="/home/mclee/.local/share/pnpm"
+case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+esac

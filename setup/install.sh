@@ -5,6 +5,7 @@
 
 # install packages
 packages=(
+    cmake           # A cross-platform open-source make system
     lazygit         # Simple terminal UI for git commands
     git-delta       # Syntax-highlighting pager for git and diff output
     emacs           # The extensible, customizable, self-documenting real-time display editor
@@ -18,7 +19,12 @@ packages=(
     wiremix         # A simple TUI audio mixer for PipeWire
     waybar          # Highly customizable Wayland bar for Sway and Wlroots based compositors
     keepassxc       # Cross-platform community-driven port of Keepass password manager
-    pnpm            # Fast, disk space efficient package manager
+
+    # screenshot tools
+    wl-clipboard    # Command-line copy/paste utilities for Wayland
+    slurp           # Select a region in a Wayland compositor
+    grim            # Screenshot utility for Wayland
+    satty           # Modern screenshot annotation tool, inspired by Swappy and Flameshot
 )
 
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"

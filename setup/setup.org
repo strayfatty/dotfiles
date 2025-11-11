@@ -40,3 +40,8 @@ URL: https://github.com/Schniz/fnm
 #+begin_src bash
 curl -fsSL https://fnm.vercel.app/install | bash
 #+end_src
+** pnpm
+URL: https://pnpm.io/installation
+#+begin_src sh
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+#+end_src
