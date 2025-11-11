@@ -25,6 +25,10 @@ packages=(
     slurp           # Select a region in a Wayland compositor
     grim            # Screenshot utility for Wayland
     satty           # Modern screenshot annotation tool, inspired by Swappy and Flameshot
+
+    # music
+    mpd
+    rmpc
 )
 
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"

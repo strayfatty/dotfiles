@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-OUT_DIR="$HOME/Screenshots"
+OUT_DIR="$HOME/screenshots"
 if [[ ! -d "$OUT_DIR" ]]; then
     # notify user
     exit 1
