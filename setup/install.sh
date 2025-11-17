@@ -27,8 +27,11 @@ packages=(
     satty           # Modern screenshot annotation tool, inspired by Swappy and Flameshot
 
     # music
-    mpd
-    rmpc
+    mpd             # Flexible, powerful, server-side application for playing music
+    rmpc            # A beautiful and configurable TUI client for MPD
+
+    # syncthing
+    syncthing       # Open Source Continuous Replication / Cluster Synchronization Thing
 )
 
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"

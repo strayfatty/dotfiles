@@ -25,8 +25,13 @@ EOF
 :header-args:shell: :var COMMENT=(read-string "Comment (mclee@archibald): " nil nil "mclee@archibald")
 :header-args:shell+: :var PASSWORD=(read-passwd "Password: " t)
 :END:
-#+begin_src shell
+#+begin_src bash
 ssh-keygen -t ed25519 -C $COMMENT -f ~/.ssh/${COMMENT}.key -N "$PASSWORD"
+#+end_src
+* Syncthing
+Start as user service
+#+begin_src bash
+systemctl --user start syncthing.service
 #+end_src
 * User Local Tools
 ** rustup
