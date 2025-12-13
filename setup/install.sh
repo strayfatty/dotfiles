@@ -19,6 +19,7 @@ packages=(
     wiremix         # A simple TUI audio mixer for PipeWire
     waybar          # Highly customizable Wayland bar for Sway and Wlroots based compositors
     keepassxc       # Cross-platform community-driven port of Keepass password manager
+    flatpak         # Linux application sandboxing and distribution framework (formerly xdg-app)
 
     # screenshot tools
     wl-clipboard    # Command-line copy/paste utilities for Wayland
@@ -30,8 +31,15 @@ packages=(
     mpd             # Flexible, powerful, server-side application for playing music
     rmpc            # A beautiful and configurable TUI client for MPD
 
+    # video
+    mpv             # a free, open source, and cross-platform media player
+
     # syncthing
     syncthing       # Open Source Continuous Replication / Cluster Synchronization Thing
+
+    # rust
+    rustup          # The Rust toolchain installer
+    rust-analyzer   # Rust compiler front-end for IDEs
 )
 
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"
@@ -42,6 +50,7 @@ aurPackages=(
     google-chrome       # The popular web browser by Google (Stable Channel)
     goxlr-utility       # A utility for monitoring and controlling a TC-Helicon GoXLR or GoXLR Mini.
     oh-my-posh-bin      # A prompt theme engine for any shell.
+    legcord             # Discord client with builtin client mod and theme support
 )
 yay -Syu --noconfirm --needed "${aurPackages[@]}"
 
