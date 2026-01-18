@@ -19,6 +19,7 @@ packages=(
     ttf-hack-nerd       # Patched font Hack from nerd fonts library
     hyprland            # a highly customizable dynamic tiling Wayland compositor
     hyprpaper           # a blazing fast wayland wallpaper utility with IPC controls
+    hyprlock            # hyprland’s GPU-accelerated screen locking utility
 )
 
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"

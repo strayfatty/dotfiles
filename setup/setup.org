@@ -50,3 +50,20 @@ URL: https://pnpm.io/installation
 #+begin_src sh
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 #+end_src
+
+* Set defaults
+** Check default browser
+#+begin_src shell
+xdg-settings get default-web-browser
+#+end_src
+
+#+RESULTS:
+: helium.desktop
+** List desktop entries
+#+begin_src shell
+ls /usr/share/applications
+#+end_src
+** Default browser to helium
+#+begin_src shell
+xdg-settings set default-web-browser helium.desktop
+#+end_src
