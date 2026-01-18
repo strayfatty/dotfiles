@@ -6,6 +6,7 @@ export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 
 alias ls='ls -hal --group-directories-first --color=auto'
 alias grep='grep --color=auto'
+alias minecraft='flatpak run org.prismlauncher.PrismLauncher'
 PS1='\W> '
 
 # customize prompt
@@ -22,16 +23,14 @@ fi
 
 ssh-add -t 8h $HOME/.ssh/*.key &>/dev/null
 
-# cargo/rust
-if [ -f "$HOME/.cargo/env" ]; then
-    source "$HOME/.cargo/env"
-fi
+# nvm
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# fnm
-FNM_PATH="$HOME/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-    export PATH="$FNM_PATH:$PATH"
-    eval "$(fnm env)"
+# cargo/rust
+if [[ $PATH != *"$HOME/.cargo/bin"* ]]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # pnpm
@@ -40,3 +39,6 @@ case ":$PATH:" in
     *":$PNPM_HOME:"*) ;;
     *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+# opencode
+export PATH=/home/mclee/.opencode/bin:$PATH
