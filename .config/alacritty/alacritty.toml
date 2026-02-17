@@ -18,4 +18,9 @@ decorations = "Buttonless"
 
 [font]
 normal.family = "Hack Nerd Font Mono"
-size = 14
+size = 18
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001b\r"

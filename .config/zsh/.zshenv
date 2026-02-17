@@ -14,6 +14,9 @@ fi
 # cargo / rust
 source "$HOME/.cargo/env"
 
+# local/bin
+export PATH="$HOME/.local/bin:$PATH"
+
 # go
 export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
 
