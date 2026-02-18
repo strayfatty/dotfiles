@@ -20,6 +20,9 @@ packages=(
     hyprland            # a highly customizable dynamic tiling Wayland compositor
     hyprpaper           # a blazing fast wayland wallpaper utility with IPC controls
     hyprlock            # hyprland’s GPU-accelerated screen locking utility
+    gnome-keyring       # Stores passwords and encryption keys
+    libsecret           # Library for storing and retrieving passwords and other secrets
+    seahorse            # GNOME application for managing PGP keys
 )
 
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"

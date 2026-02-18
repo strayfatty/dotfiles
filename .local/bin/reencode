@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+SOURCE=$1
+TARGET=$2
+
+ffmpeg -i "$1" -vcodec libx264 -map 0 -c:s copy -crf 28 "$2"

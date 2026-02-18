@@ -33,6 +33,8 @@ packages=(
 
     # video
     mpv             # a free, open source, and cross-platform media player
+    libdvdcss       # Portable abstraction library for DVD decryption
+    losslesscut-bin # Crossplatform GUI tool for lossless trimming/cutting of video/audio files
 
     # syncthing
     syncthing       # Open Source Continuous Replication / Cluster Synchronization Thing
