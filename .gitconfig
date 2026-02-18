@@ -7,3 +7,6 @@
 [include]
 	path = ./.config/delta/themes.gitconfig
 	path = ./.gitconfig_private
+
+[init]
+	defaultBranch = main
