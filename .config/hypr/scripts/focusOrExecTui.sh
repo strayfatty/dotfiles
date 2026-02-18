@@ -24,20 +24,16 @@ if [[ $TITLE == "" ]]; then
    exit 1
 fi
 
-if [[ $APPLICATION == "" ]]; then
-   echo "no application specified"
-   exit 1
-fi
-
 # echo "title: $TITLE"
 # echo "app: $APPLICATION"
 
 pid=$(hyprctl -j clients | jq -r "[.[] | select((.initialTitle == \"${TITLE}\") and (.class == \"Alacritty\")) | .pid] | first")
 # echo "pid: ${pid}"
 
-if [[ ($pid != "") && ($pid != "null") ]]
-then
+if [[ ($pid != "") && ($pid != "null") ]]; then
     hyprctl dispatch focuswindow "pid:$pid"
+elif [[ $APPLICATION == "" ]]; then
+    hyprctl dispatch -- exec alacritty -T "$TITLE"
 else
     hyprctl dispatch -- exec alacritty -T "$TITLE" -e "${APPLICATION}"
 fi
