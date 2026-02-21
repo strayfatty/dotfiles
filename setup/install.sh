@@ -20,6 +20,8 @@ packages=(
     waybar          # Highly customizable Wayland bar for Sway and Wlroots based compositors
     keepassxc       # Cross-platform community-driven port of Keepass password manager
     flatpak         # Linux application sandboxing and distribution framework (formerly xdg-app)
+    libnotify       # Library for sending desktop notifications
+    swaync          # A simple GTK based notification daemon for Sway
 
     # screenshot tools
     wl-clipboard    # Command-line copy/paste utilities for Wayland
