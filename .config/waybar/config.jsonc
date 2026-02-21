@@ -1,15 +1,50 @@
 // -*- mode: jsonc -*-
 {
-    "spacing": 4, // Gaps between modules (4px)
+    "layer": "top",
+    "margin-top": 2,
+
     "modules-left": [
+        "clock"
+    ],
+
+    "modules-center": [
         "hyprland/workspaces",
     ],
-    "modules-center": [
-    ],
+
     "modules-right": [
-        "custom/power"
+        "custom/notification",
     ],
+
+    "clock": {
+        "interval": 30,
+        "format": " {0:%H:%M} ",
+        "format-alt": "{:%a, %B %d }",
+        "tooltip-format": "<small><tt>{calendar}</tt></small>",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "left",
+            "on-scroll"     : 1,
+            "iso8601": true,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{:%U}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_down",
+            "on-scroll-down": "shift_up"
+        },
+    },
+
     "hyprland/workspaces": {
+        "format": "",
         "disable-scroll": true,
         "all-outputs": true,
         "warp-on-scroll": false,
@@ -19,14 +54,26 @@
             "DP-3": [6] 
         },
     },
-    "custom/power": {
-        "format" : " ⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot"
-		}
-    }
+
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": " <span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": " <span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+
 }
