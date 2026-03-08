@@ -23,6 +23,7 @@ packages=(
     gnome-keyring       # Stores passwords and encryption keys
     libsecret           # Library for storing and retrieving passwords and other secrets
     seahorse            # GNOME application for managing PGP keys
+    wofi                # launcher for wlroots-based wayland compositors
 )
 
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"
