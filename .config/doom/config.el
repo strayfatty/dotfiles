@@ -16,8 +16,8 @@
 (setq completion-ignore-case t)
 
 (setq doom-theme 'doom-one)
-;; (setq doom-theme 'doom-shades-of-purple)
-;; (setq doom-theme 'doom-solarized-dark)
+;; (setq catppuccin-flavor 'mocha)
+;; (setq doom-theme 'catppuccin)
 
 (setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 18))
 

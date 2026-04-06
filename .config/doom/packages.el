@@ -54,3 +54,4 @@
 ;; (package! vertico-posframe)
 (package! org-clock-csv)
 (package! verb)
+(package! catppuccin-theme)
