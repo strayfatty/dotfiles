@@ -102,6 +102,30 @@
 (setq lsp-javascript-preferences-import-module-specifier "non-relative")
 (setq lsp-typescript-preferences-import-module-specifier "non-relative")
 
+(when (require 'treesit nil t)
+  (add-to-list 'treesit-language-source-alist
+               '(qmljs "https://github.com/yuja/tree-sitter-qmljs")))
+  ;; (add-to-list 'treesit-load-name-override-list
+  ;;              '(qmljs "libtree-sitter-qml" "tree_sitter_qmljs")))
+
+(use-package! qml-ts-mode
+  :mode "\\.qml\\'"
+  :config
+  (add-to-list 'major-mode-remap-alist '(qml-mode . qml-ts-mode)))
+
+(after! lsp-mode
+  (add-to-list 'lsp-language-id-configuration '(qml-ts-mode . "qml-ts"))
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection '("qmlls6"))
+    :activation-fn (lsp-activate-on "qml-ts")
+    :server-id 'qmls)))
+
+(add-hook! 'qml-ts-mode-hook
+           (setq-local electric-indent-chars
+                       '(?\n ?\( ?\) ?{ ?} ?\[ ?\] ?\; ?,))
+           (lsp-deferred))
+
 ;; (vertico-posframe-mode 1)
 
 (defun tm:open-eshell-at (path &optional name)

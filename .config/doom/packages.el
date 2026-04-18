@@ -55,3 +55,5 @@
 (package! org-clock-csv)
 (package! verb)
 (package! catppuccin-theme)
+(package! qml-ts-mode
+  :recipe (:host github :repo "xhcoding/qml-ts-mode"))
