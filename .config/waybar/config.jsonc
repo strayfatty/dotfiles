@@ -4,7 +4,8 @@
     "margin-top": 2,
 
     "modules-left": [
-        "clock"
+        "clock",
+        "custom/keybind-mode",
     ],
 
     "modules-center": [
@@ -14,6 +15,14 @@
     "modules-right": [
         "custom/notification",
     ],
+
+    "custom/keybind-mode": {
+        "return-type": "json",
+        "exec": "~/.config/hypr/scripts/getSubmapStatus.sh",
+        "interval": 1,
+        "format": "{}",
+        "tooltip": true
+    },
 
     "clock": {
         "interval": 30,

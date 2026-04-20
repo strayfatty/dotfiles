@@ -38,6 +38,7 @@ tooltip label {
 
 #custom-launcher,
 #clock,
+#custom-keybind-mode,
 #workspaces,
 #custom-media,
 #custom-pacman,
@@ -58,6 +59,21 @@ tooltip label {
     padding: 0 10px;
     background-color: @surface;
     color: @primary;
+}
+
+#custom-keybind-mode.hidden {
+    padding: 0;
+    margin-right: 0;
+    min-width: 0;
+    background: transparent;
+    color: transparent;
+}
+
+#custom-keybind-mode.active {
+    margin-right: 10px;
+    padding: 0 12px;
+    /* background-color: @error; */
+    /* color: @surface; */
 }
 
 #power-profiles-daemon {
