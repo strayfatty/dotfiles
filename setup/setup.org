@@ -67,3 +67,9 @@ ls /usr/share/applications
 #+begin_src shell
 xdg-settings set default-web-browser helium.desktop
 #+end_src
+
+* LLMs
+** with ollama
+- ollama pull gemma4:26b
+- ollama run pi --config
+- ollama run gemma4:26b
