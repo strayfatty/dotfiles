@@ -23,6 +23,8 @@ packages=(
     libnotify       # Library for sending desktop notifications
     swaync          # A simple GTK based notification daemon for Sway
 
+    nvtop           # GPUs process monitoring for AMD, Intel and NVIDIA
+
     # screenshot tools
     wl-clipboard    # Command-line copy/paste utilities for Wayland
     slurp           # Select a region in a Wayland compositor
@@ -44,6 +46,12 @@ packages=(
     # rust
     rustup          # The Rust toolchain installer
     rust-analyzer   # Rust compiler front-end for IDEs
+
+    # local llms
+    cuda            # NVIDIA's GPU programming toolkit - buggy
+    ollama          # Create, run and share large language models (LLMs)
+    ollama-cuda     # Create, run and share large language models (LLMs) with sudo
+    llama.cpp-cuda  # Port of Facebook's LLaMA model in C/C++ (with NVIDIA CUDA optimizations)
 )
 
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"
