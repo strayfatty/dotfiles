@@ -126,6 +126,11 @@
                        '(?\n ?\( ?\) ?{ ?} ?\[ ?\] ?\; ?,))
            (lsp-deferred))
 
+(after! lsp-lua
+  (setq lsp-lua-workspace-library
+        (vconcat (or lsp-lua-workspace-library [])
+                 ["/usr/share/hypr/stubs"])))
+
 ;; (vertico-posframe-mode 1)
 
 (defun tm:open-eshell-at (path &optional name)
