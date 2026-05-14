@@ -213,6 +213,14 @@ A few caveats from the docs:
 - qmlls works poorly when the file structure is temporarily broken.
 - Quickshell type docs are not available through the LSP.
 - PanelWindow may not resolve correctly.
+** Lua
+Add hyprland stubs.
+#+begin_src emacs-lisp
+(after! lsp-lua
+  (setq lsp-lua-workspace-library
+        (vconcat (or lsp-lua-workspace-library [])
+                 ["/usr/share/hypr/stubs"])))
+#+end_src
 * iBuffer
 ** Group files
 #+begin_src emacs-lisp

@@ -127,6 +127,11 @@
                        '(?\n ?\( ?\) ?{ ?} ?\[ ?\] ?\; ?,))
            (lsp-deferred))
 
+(after! lsp-lua
+  (setq lsp-lua-workspace-library
+        (vconcat (or lsp-lua-workspace-library [])
+                 ["/usr/share/hypr/stubs"])))
+
 (setq ibuffer-expert t)
 (setq ibuffer-display-summary nil)
 (setq ibuffer-use-other-window nil)
