@@ -48,7 +48,7 @@ pid=$(hyprctl -j clients | jq -r "[.[] | select(${FILTER}) | .pid] | first")
 
 if [[ ($pid != "") && ($pid != "null") ]]
 then
-    hyprctl dispatch focuswindow "$CLIENT_REF"
+    hyprctl dispatch "hl.dsp.focus({ window = \"$CLIENT_REF\" })"
 else
-    hyprctl dispatch -- exec "$BROWSER" --app="${APPLICATION}"
+    hyprctl dispatch "hl.dsp.exec_cmd(\"\\\"$BROWSER\\\" -app=\\\"$APPLICATION\\\"\")"
 fi
