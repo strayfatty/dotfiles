@@ -56,5 +56,5 @@ if [[ ($pid != "") && ($pid != "null") ]]
 then
     hyprctl dispatch "hl.dsp.focus({ window = \"pid:$pid\" })"
 else
-    hyprctl dispatch exec "$APPLICATION"
+    hyprctl dispatch "hl.dsp.exec_cmd(\"$APPLICATION\")"
 fi
