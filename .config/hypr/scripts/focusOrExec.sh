@@ -54,7 +54,7 @@ pid=$(hyprctl -j clients | jq -r "[.[] | select(${FILTER}) | .pid] | first")
 
 if [[ ($pid != "") && ($pid != "null") ]]
 then
-    hyprctl dispatch focuswindow "pid:$pid"
+    hyprctl dispatch "hl.dsp.focus({ window = \"pid:$pid\" })"
 else
     hyprctl dispatch exec "$APPLICATION"
 fi

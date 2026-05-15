@@ -31,9 +31,9 @@ pid=$(hyprctl -j clients | jq -r "[.[] | select((.initialTitle == \"${TITLE}\") 
 # echo "pid: ${pid}"
 
 if [[ ($pid != "") && ($pid != "null") ]]; then
-    hyprctl dispatch focuswindow "pid:$pid"
+    hyprctl dispatch "hl.dsp.focus({ window = \"pid:$pid\" })"
 elif [[ $APPLICATION == "" ]]; then
-    hyprctl dispatch -- exec alacritty -T "$TITLE"
+    hyprctl dispatch "hl.dsp.exec_cmd(\"alacritty -T \\\"$TITLE\\\"\")"
 else
-    hyprctl dispatch -- exec alacritty -T "$TITLE" -e "${APPLICATION}"
+    hyprctl dispatch "hl.dsp.exec_cmd(\"alacritty -T \\\"$TITLE\\\" -e \\\"$APPLICATION\\\"\")"
 fi
