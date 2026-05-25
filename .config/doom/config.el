@@ -93,6 +93,15 @@
 
 (setq org-duration-format (quote h:mm))
 
+(defun tm-open-with-mpv (path _prefix)
+  (let ((file (expand-file-name path)))
+    (make-process
+     :name "mpv"
+     :command (list "mpv" file))))
+
+(after! org
+  (org-link-set-parameters "mpv" :follow #'tm-open-with-mpv))
+
 (map! :leader
       (:prefix ("r" . "ripgrep")
        :desc "Project" "r" #'rg-project))

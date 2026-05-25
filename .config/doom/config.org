@@ -158,6 +158,17 @@ Add timestamp and note when done
 #+begin_src emacs-lisp
 (setq org-duration-format (quote h:mm))
 #+end_src
+** MPV Playback
+#+begin_src emacs-lisp
+(defun tm-open-with-mpv (path _prefix)
+  (let ((file (expand-file-name path)))
+    (make-process
+     :name "mpv"
+     :command (list "mpv" file))))
+
+(after! org
+  (org-link-set-parameters "mpv" :follow #'tm-open-with-mpv))
+#+end_src
 * Keyboard
 ** Ripgrep
 #+begin_src emacs-lisp
