@@ -136,6 +136,13 @@
                        '(?\n ?\( ?\) ?{ ?} ?\[ ?\] ?\; ?,))
            (lsp-deferred))
 
+(use-package! odin-ts-mode
+  :mode "\\.odin\\'")
+
+(after! treesit
+  (add-to-list 'treesit-language-source-alist
+               '(odin "https://github.com/tree-sitter-grammars/tree-sitter-odin")))
+
 (after! lsp-lua
   (setq lsp-lua-workspace-library
         (vconcat (or lsp-lua-workspace-library [])

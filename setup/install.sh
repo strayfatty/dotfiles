@@ -47,6 +47,9 @@ packages=(
     rustup          # The Rust toolchain installer
     rust-analyzer   # Rust compiler front-end for IDEs
 
+    # odin
+    odin            # Data-oriented programming language
+
     # local llms
     cuda            # NVIDIA's GPU programming toolkit - buggy
     ollama          # Create, run and share large language models (LLMs)

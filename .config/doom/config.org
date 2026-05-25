@@ -224,6 +224,15 @@ A few caveats from the docs:
 - qmlls works poorly when the file structure is temporarily broken.
 - Quickshell type docs are not available through the LSP.
 - PanelWindow may not resolve correctly.
+** Odin
+#+begin_src emacs-lisp
+(use-package! odin-ts-mode
+  :mode "\\.odin\\'")
+
+(after! treesit
+  (add-to-list 'treesit-language-source-alist
+               '(odin "https://github.com/tree-sitter-grammars/tree-sitter-odin")))
+#+end_src
 ** Lua
 Add hyprland stubs.
 #+begin_src emacs-lisp

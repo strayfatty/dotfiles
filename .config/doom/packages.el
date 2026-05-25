@@ -57,3 +57,5 @@
 (package! catppuccin-theme)
 (package! qml-ts-mode
   :recipe (:host github :repo "xhcoding/qml-ts-mode"))
+(package! odin-ts-mode
+  :recipe (:host github :repo "Sampie159/odin-ts-mode"))
