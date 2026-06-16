@@ -151,7 +151,7 @@ If you use `org' and don't want your org files in the default location below, ch
 ** When done
 Add timestamp and note when done
 #+BEGIN_SRC emacs-lisp
-(setq org-log-done 'note)
+(setq org-log-done 'time)
 #+END_SRC
 ** Clocktables
 *** Only print hours and minuts for time
@@ -168,6 +168,7 @@ Add timestamp and note when done
 * LSP
 #+begin_src emacs-lisp
 (setq lsp-auto-execute-action nil)
+(setq lsp-signature-auto-activate nil)
 
 (setq lsp-javascript-preferences-import-module-specifier "non-relative")
 (setq lsp-typescript-preferences-import-module-specifier "non-relative")
@@ -212,6 +213,38 @@ A few caveats from the docs:
 - qmlls works poorly when the file structure is temporarily broken.
 - Quickshell type docs are not available through the LSP.
 - PanelWindow may not resolve correctly.
+* iBuffer
+** Group files
+#+begin_src emacs-lisp
+(setq ibuffer-expert t)
+(setq ibuffer-display-summary nil)
+(setq ibuffer-use-other-window nil)
+(setq ibuffer-show-empty-filter-groups nil)
+(setq ibuffer-default-sorting-mode 'filename/process)
+(setq ibuffer-title-face 'font-lock-doc-face)
+(setq ibuffer-use-header-line t)
+(setq ibuffer-default-shrink-to-minimum-size nil)
+
+(setq ibuffer-saved-filter-groups
+      '(("Main"
+         ("Directories" (mode . dired-mode))
+         ("Org" (mode . org-mode))
+         ("Emacs" (or
+                     (mode . emacs-lisp-mode)
+                     (name . "^\\*Help\\*$")
+                     (name . "^\\*Custom.*")
+                     (name . "^\\*Org Agenda\\*$")
+                     (name . "^\\*info\\*$")
+                     (name . "^\\*scratch\\*$")
+                     (name . "^\\*Backtrace\\*$")
+                     (name . "^\\*doom\\*$")
+                     (name . "^\\*compilation\\*")
+                     (name . "^\\*Async-native-compile-log\\*$")
+                     (name . "^\\*Native-compile-log\\*$")
+                     (name . "^\\*Messages\\*$"))))))
+
+(add-hook 'ibuffer-mode-hook (lambda () (ibuffer-switch-to-saved-filter-groups "Main")))
+#+end_src
 * vertico-posframe
 #+begin_src emacs-lisp
 ;; (vertico-posframe-mode 1)
@@ -243,8 +276,31 @@ A few caveats from the docs:
     (kill-new
      (string-trim
       (substring-no-properties(org-table-get-field))))))
+
+(defun tm:prettier-content ()
+  "Format file content using prettier from current project"
+  (interactive)
+  (shell-command-on-region
+   ;; beginning and end of buffer
+   (point-min)
+   (point-max)
+   ;; command and parameters
+   "npx prettier --stdin-filepath temp.ts"
+   ;; output buffer
+   (current-buffer)
+   ;; replace
+   t
+   "*prettier error buffer"
+   ;; show error buffer
+   t)
+  (save-buffer))
 #+end_src
 * Company
+** Faster completion
+#+begin_src emacs-lisp
+(setq company-idle-delay 0.01)
+(setq company-minimum-prefix-length 1)
+#+end_src
 ** Use TAB for completion
 #+begin_src emacs-lisp
 (after! company
@@ -285,6 +341,12 @@ A few caveats from the docs:
   ;; Turning it off ensures we have full control.
   (setq company-auto-commit-chars nil)
   )
+#+end_src
+* Maps
+#+begin_src emacs-lisp
+(map! :leader
+      (:prefix ("c")
+       :desc "prettier" "p" (cmd! (tm:prettier-content))))
 #+end_src
 * Load Private Configuration
 Load private/machine specific configuration

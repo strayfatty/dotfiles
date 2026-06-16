@@ -89,7 +89,7 @@
          (id (cdr (assoc contact headlines))))
     (format "[[id:%s][%s]]" id contact)))
 
-(setq org-log-done 'note)
+(setq org-log-done 'time)
 
 (setq org-duration-format (quote h:mm))
 
@@ -98,6 +98,7 @@
        :desc "Project" "r" #'rg-project))
 
 (setq lsp-auto-execute-action nil)
+(setq lsp-signature-auto-activate nil)
 
 (setq lsp-javascript-preferences-import-module-specifier "non-relative")
 (setq lsp-typescript-preferences-import-module-specifier "non-relative")
@@ -126,6 +127,35 @@
                        '(?\n ?\( ?\) ?{ ?} ?\[ ?\] ?\; ?,))
            (lsp-deferred))
 
+(setq ibuffer-expert t)
+(setq ibuffer-display-summary nil)
+(setq ibuffer-use-other-window nil)
+(setq ibuffer-show-empty-filter-groups nil)
+(setq ibuffer-default-sorting-mode 'filename/process)
+(setq ibuffer-title-face 'font-lock-doc-face)
+(setq ibuffer-use-header-line t)
+(setq ibuffer-default-shrink-to-minimum-size nil)
+
+(setq ibuffer-saved-filter-groups
+      '(("Main"
+         ("Directories" (mode . dired-mode))
+         ("Org" (mode . org-mode))
+         ("Emacs" (or
+                     (mode . emacs-lisp-mode)
+                     (name . "^\\*Help\\*$")
+                     (name . "^\\*Custom.*")
+                     (name . "^\\*Org Agenda\\*$")
+                     (name . "^\\*info\\*$")
+                     (name . "^\\*scratch\\*$")
+                     (name . "^\\*Backtrace\\*$")
+                     (name . "^\\*doom\\*$")
+                     (name . "^\\*compilation\\*")
+                     (name . "^\\*Async-native-compile-log\\*$")
+                     (name . "^\\*Native-compile-log\\*$")
+                     (name . "^\\*Messages\\*$"))))))
+
+(add-hook 'ibuffer-mode-hook (lambda () (ibuffer-switch-to-saved-filter-groups "Main")))
+
 ;; (vertico-posframe-mode 1)
 
 (defun tm:open-eshell-at (path &optional name)
@@ -153,6 +183,27 @@
     (kill-new
      (string-trim
       (substring-no-properties(org-table-get-field))))))
+
+(defun tm:prettier-content ()
+  "Format file content using prettier from current project"
+  (interactive)
+  (shell-command-on-region
+   ;; beginning and end of buffer
+   (point-min)
+   (point-max)
+   ;; command and parameters
+   "npx prettier --stdin-filepath temp.ts"
+   ;; output buffer
+   (current-buffer)
+   ;; replace
+   t
+   "*prettier error buffer"
+   ;; show error buffer
+   t)
+  (save-buffer))
+
+(setq company-idle-delay 0.01)
+(setq company-minimum-prefix-length 1)
 
 (after! company
   ;;; Prevent suggestions from being triggered automatically. In particular,
@@ -192,5 +243,9 @@
   ;; Turning it off ensures we have full control.
   (setq company-auto-commit-chars nil)
   )
+
+(map! :leader
+      (:prefix ("c")
+       :desc "prettier" "p" (cmd! (tm:prettier-content))))
 
 (tm:load-config "config_private.el")
