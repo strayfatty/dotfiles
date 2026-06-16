@@ -78,7 +78,7 @@ yabai -m rule --add app="^Godot" title="Create New Resource" manage=off
 yabai -m rule --add app="^Godot" title="Save Scene As..." manage=off
 yabai -m rule --add app="^Godot" title="Create Folder" manage=off
 
-yabai -m rule --add app="^Tuple$" space=^3
+yabai -m rule --add app="^Music$" space=^3
 yabai -m rule --add app="^Alacritty$" title="The Menu" manage=off grid=6:4:1:1:2:4
 
 yabai -m config layout bsp
