@@ -143,6 +143,17 @@
   (add-to-list 'treesit-language-source-alist
                '(odin "https://github.com/tree-sitter-grammars/tree-sitter-odin")))
 
+(after! lsp-mode
+  (add-to-list 'lsp-language-id-configuration '(odin-ts-mode . "odin"))
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection '("ols"))
+    :activation-fn (lsp-activate-on "odin")
+    :server-id 'ols)))
+
+(add-hook! 'odin-ts-mode-hook
+  (lsp-deferred))
+
 (after! lsp-lua
   (setq lsp-lua-workspace-library
         (vconcat (or lsp-lua-workspace-library [])
