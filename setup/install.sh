@@ -49,6 +49,7 @@ packages=(
 
     # odin
     odin            # Data-oriented programming language
+    ols             # Language server for Odin
 
     # local llms
     cuda            # NVIDIA's GPU programming toolkit - buggy
