@@ -106,6 +106,9 @@
       (:prefix ("r" . "ripgrep")
        :desc "Project" "r" #'rg-project))
 
+(map! :leader
+      :desc "Lazygit" "l" #'tm:lazygit)
+
 (setq lsp-auto-execute-action nil)
 (setq lsp-signature-auto-activate nil)
 
@@ -233,6 +236,20 @@
    ;; show error buffer
    t)
   (save-buffer))
+
+(defun tm:lazygit ()
+  "Open lazygit (in alacritty) for the current project root"
+  (interactive)
+  (start-process
+   "run lazygit"
+   nil
+   "alacritty"
+   "-t"
+   "lazygit-floating"
+   "-e"
+   "lazygit"
+   "-p"
+   (or (doom-project-root) default-directory)))
 
 (setq company-idle-delay 0.01)
 (setq company-minimum-prefix-length 1)

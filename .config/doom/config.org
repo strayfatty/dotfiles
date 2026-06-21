@@ -176,6 +176,11 @@ Add timestamp and note when done
       (:prefix ("r" . "ripgrep")
        :desc "Project" "r" #'rg-project))
 #+end_src
+** Lazygit
+#+begin_src emacs-lisp
+(map! :leader
+      :desc "Lazygit" "l" #'tm:lazygit)
+#+end_src
 * LSP
 #+begin_src emacs-lisp
 (setq lsp-auto-execute-action nil)
@@ -333,6 +338,22 @@ Add hyprland stubs.
    ;; show error buffer
    t)
   (save-buffer))
+#+end_src
+** Lazygit integration
+#+begin_src emacs-lisp
+(defun tm:lazygit ()
+  "Open lazygit (in alacritty) for the current project root"
+  (interactive)
+  (start-process
+   "run lazygit"
+   nil
+   "alacritty"
+   "-t"
+   "lazygit-floating"
+   "-e"
+   "lazygit"
+   "-p"
+   (or (doom-project-root) default-directory)))
 #+end_src
 * Company
 ** Faster completion
