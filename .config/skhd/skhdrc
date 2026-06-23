@@ -1,5 +1,5 @@
 # Application shortcuts
-alt - 1 : open -a Emacs
+alt - 1 : ~/.config/skhd/focus-emacs.sh
 # alt - 3 : open -a "T3 Code (Alpha).app"
 alt - 3 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select((.space==3) and (.app=="Alacritty")) | .id')
 # alt - 3 : yabai -m window --focus $(yabai -m query --windows | jq '.[] | select((.app=="Chromium") or (.app=="Godot")) | .id')
