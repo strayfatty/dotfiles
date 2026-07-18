@@ -18,7 +18,7 @@ decorations = "Buttonless"
 
 [font]
 normal.family = "Hack Nerd Font Mono"
-size = 18
+size = 16
 
 [[keyboard.bindings]]
 key = "Return"
