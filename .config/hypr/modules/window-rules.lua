@@ -23,7 +23,7 @@ hl.window_rule({
 hl.window_rule({
   name = "Coding Agent",
   match = {
-    initial_class = "t3code",
+    class = "t3code",
   },
 
   workspace = "3",
