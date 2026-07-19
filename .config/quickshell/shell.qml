@@ -18,6 +18,7 @@ ShellRoot {
 
             required property var modelData
             property bool showingDate: false
+            readonly property var hyprlandMonitor: Hyprland.monitorFor(screen)
             readonly property var workspaceIds: {
                 if (screen.name === "DP-1")
                     return [1, 2, 3, 4, 5, 9, 10]
@@ -95,10 +96,13 @@ ShellRoot {
 
                             required property int modelData
                             readonly property int workspaceId: modelData
+                            readonly property bool active: panel.hyprlandMonitor !== null
+                                && panel.hyprlandMonitor.activeWorkspace !== null
+                                && panel.hyprlandMonitor.activeWorkspace.id === workspaceId
                             readonly property bool focused: Hyprland.focusedWorkspace !== null
                                 && Hyprland.focusedWorkspace.id === workspaceId
 
-                            width: focused ? 32 : 16
+                            width: active ? 32 : 16
                             height: 16
                             radius: width / 2
                             color: workspaceMouse.containsMouse
