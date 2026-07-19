@@ -22,18 +22,18 @@ hl.bind("SUPER + ALT + 1", hl.dsp.exec_cmd("~/.config/emacs/bin/doom run --debug
 hl.bind("ALT + 2", tm.focus.app("google-chrome-stable", { class = "google-chrome" }))
 hl.bind("ALT + 3", tm.focus.app("t3code"))
 hl.bind("ALT + 4", tm.focus.tui("lazygit"))
-hl.bind("ALT + 7", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh --chrome -c \"chrome-www.amazon.de__-_en_gp_video_storefront-Default\" \"https://www.amazon.de/-/en/gp/video/storefront\""))
+hl.bind("ALT + 7", tm.focus.web_app("https://www.amazon.de/-/en/gp/video/storefront", { class = "chrome-www.amazon.de__-_en_gp_video_storefront-Default" }))
 hl.bind("ALT + 9", tm.focus.app("helium-browser", { class = "helium" }))
 hl.bind("ALT + 0", tm.focus.app("steam"))
 hl.bind("ALT + minus", tm.focus.steam_app)
 hl.bind("ALT + C", hl.dsp.exec_cmd("alacritty"))
 
 -- other applications
-hl.bind("SUPER + S", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh --chrome -c \"chrome-localhost__-Default\" \"http://localhost:8384\""))
+hl.bind("SUPER + S", tm.focus.web_app("http://localhost:8384", { class = "chrome-localhost__-Default" }))
 hl.bind("SUPER + A", tm.focus.tui("wiremix"))
 hl.bind("SUPER + M", tm.focus.tui("rmpc"))
 hl.bind("SUPER + T", tm.focus.tui("htop"))
-hl.bind("SUPER + G", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh --chrome -t \"GoXLR Utility\" \"http://localhost:14564\""))
+hl.bind("SUPER + G", tm.focus.web_app("http://localhost:14564", { title = "GoXLR Utility" }))
 
 hl.bind("CONTROL + ALT + SHIFT + W", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"))
 
