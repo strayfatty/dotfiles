@@ -1,4 +1,4 @@
---require("modules/env")
+require("modules/env")
 require("modules/monitors")
 require("modules/workspaces")
 require("modules/input")

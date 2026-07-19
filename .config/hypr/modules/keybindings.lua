@@ -17,7 +17,7 @@ hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreensho
 hl.bind("SUPER + ALT + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreenshot.sh -f"))
 
 -- core applications
-hl.bind("ALT + 1", hl.dsp.exec_cmd("~/.config/hypr/scripts/focusOrExec.sh -c Emacs emacs"))
+hl.bind("ALT + 1", tm.focus_emacs)
 hl.bind("ALT + 2", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExec.sh -c \"google-chrome\" \"google-chrome-stable\""))
 hl.bind("ALT + 3", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExec.sh -c \"t3code\" \"t3code\""))
 hl.bind("ALT + 4", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"lazygit\" \"lazygit\""))
