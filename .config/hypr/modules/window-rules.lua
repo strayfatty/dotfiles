@@ -47,7 +47,7 @@ hl.window_rule({
     float = true,
     center = true,
     size = "(monitor_w*0.95) (monitor_h*0.9)",
-    animation = "none",
+    no_anim = true,
 })
 
 hl.window_rule({
