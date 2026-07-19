@@ -17,14 +17,15 @@ hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreensho
 hl.bind("SUPER + ALT + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreenshot.sh -f"))
 
 -- core applications
-hl.bind("ALT + 1", tm.focus_or_exec_emacs)
-hl.bind("ALT + 2", tm.focus_or_exec({ class = "google-chrome" }, "google-chrome-stable"))
-hl.bind("ALT + 3", tm.focus_or_exec({ class = "t3code" }, "t3code"))
+hl.bind("ALT + 1", tm.focus.emacs)
+hl.bind("ALT + 2", tm.focus.app("google-chrome-stable", { class = "google-chrome" }))
+hl.bind("ALT + 3", tm.focus.app("t3code"))
 hl.bind("ALT + 4", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"lazygit\" \"lazygit\""))
 hl.bind("ALT + 7", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh --chrome -c \"chrome-www.amazon.de__-_en_gp_video_storefront-Default\" \"https://www.amazon.de/-/en/gp/video/storefront\""))
-hl.bind("ALT + 9", tm.focus_or_exec({ class = "helium" }, "helium-browser"))
-hl.bind("ALT + 0", tm.focus_or_exec({ class = "steam" }, "steam"))
-hl.bind("ALT + minus", hl.dsp.exec_cmd(".config/hypr/scripts/focusSteamApp.sh"))
+hl.bind("ALT + 9", tm.focus.app("helium-browser", { class = "helium" }))
+hl.bind("ALT + 0", tm.focus.app("steam"))
+-- hl.bind("ALT + minus", hl.dsp.exec_cmd(".config/hypr/scripts/focusSteamApp.sh"))
+hl.bind("ALT + minus", tm.focus.steam_app)
 hl.bind("ALT + C", hl.dsp.exec_cmd("alacritty"))
 
 -- other applications
@@ -37,10 +38,10 @@ hl.bind("SUPER + G", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh 
 hl.bind("CONTROL + ALT + SHIFT + W", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"))
 
 -- movement
-hl.bind("ALT + H", tm.focus_direction("l"))
-hl.bind("ALT + J", tm.focus_direction("d"))
-hl.bind("ALT + K", tm.focus_direction("u"))
-hl.bind("ALT + L", tm.focus_direction("r"))
+hl.bind("ALT + H", tm.focus.direction("l"))
+hl.bind("ALT + J", tm.focus.direction("d"))
+hl.bind("ALT + K", tm.focus.direction("u"))
+hl.bind("ALT + L", tm.focus.direction("r"))
 
 hl.bind("ALT + SHIFT + 1", hl.dsp.window.move({ workspace = 1 }))
 hl.bind("ALT + SHIFT + 2", hl.dsp.window.move({ workspace = 2 }))
