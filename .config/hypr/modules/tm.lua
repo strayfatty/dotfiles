@@ -4,7 +4,22 @@ function tm.focus_direction(dir)
   return hl.dsp.focus({ direction = dir })
 end
 
-function tm.focus_emacs()
+---@param filters HL.WindowQueryFilter
+---@param application string
+---@return fun()
+function tm.focus_or_exec(filters, application)
+  return function()
+    local window = hl.get_windows(filters)[1]
+    if window then
+      hl.dispatch(hl.dsp.focus({ window = window }))
+      return
+    end
+
+    hl.exec_cmd(application)
+  end
+end
+
+function tm.focus_or_exec_emacs()
   -- Focus the floating Lazygit window first, if it exists.
   local lazygit = hl.get_window("initialtitle:lazygit-floating")
   if lazygit then
@@ -21,18 +36,5 @@ function tm.focus_emacs()
 
   hl.exec_cmd("emacs")
 end
-
--- tm.focus_or_exec = {}
--- function tm.focus_or_exec.by_class(filter, appliation)
--- end
-
--- function tm.focus_or_exec.by_initial_class()
--- end
-
--- function tm.focus_or_exec.by_title()
--- end
-
--- function tm.focus_or_exec.by_initial_title()
--- end
 
 return tm

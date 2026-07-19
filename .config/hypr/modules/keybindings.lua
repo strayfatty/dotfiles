@@ -17,13 +17,13 @@ hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreensho
 hl.bind("SUPER + ALT + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreenshot.sh -f"))
 
 -- core applications
-hl.bind("ALT + 1", tm.focus_emacs)
-hl.bind("ALT + 2", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExec.sh -c \"google-chrome\" \"google-chrome-stable\""))
-hl.bind("ALT + 3", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExec.sh -c \"t3code\" \"t3code\""))
+hl.bind("ALT + 1", tm.focus_or_exec_emacs)
+hl.bind("ALT + 2", tm.focus_or_exec({ class = "google-chrome" }, "google-chrome-stable"))
+hl.bind("ALT + 3", tm.focus_or_exec({ class = "t3code" }, "t3code"))
 hl.bind("ALT + 4", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"lazygit\" \"lazygit\""))
 hl.bind("ALT + 7", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh --chrome -c \"chrome-www.amazon.de__-_en_gp_video_storefront-Default\" \"https://www.amazon.de/-/en/gp/video/storefront\""))
-hl.bind("ALT + 9", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExec.sh -c \"helium\" \"helium-browser\""))
-hl.bind("ALT + 0", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExec.sh -c \"steam\" \"steam\""))
+hl.bind("ALT + 9", tm.focus_or_exec({ class = "helium" }, "helium-browser"))
+hl.bind("ALT + 0", tm.focus_or_exec({ class = "steam" }, "steam"))
 hl.bind("ALT + minus", hl.dsp.exec_cmd(".config/hypr/scripts/focusSteamApp.sh"))
 hl.bind("ALT + C", hl.dsp.exec_cmd("alacritty"))
 
@@ -33,7 +33,6 @@ hl.bind("SUPER + A", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T 
 hl.bind("SUPER + M", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"rmpc\" \"rmpc\""))
 hl.bind("SUPER + T", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"htop\" \"htop\""))
 hl.bind("SUPER + G", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh --chrome -t \"GoXLR Utility\" \"http://localhost:14564\""))
-hl.bind("SUPER + SHIFT + L", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExec.sh -c \"net.lutris.Lutris\" \"lutris\""))
 
 hl.bind("CONTROL + ALT + SHIFT + W", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"))
 
