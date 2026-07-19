@@ -24,7 +24,6 @@ hl.bind("ALT + 4", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"
 hl.bind("ALT + 7", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh --chrome -c \"chrome-www.amazon.de__-_en_gp_video_storefront-Default\" \"https://www.amazon.de/-/en/gp/video/storefront\""))
 hl.bind("ALT + 9", tm.focus.app("helium-browser", { class = "helium" }))
 hl.bind("ALT + 0", tm.focus.app("steam"))
--- hl.bind("ALT + minus", hl.dsp.exec_cmd(".config/hypr/scripts/focusSteamApp.sh"))
 hl.bind("ALT + minus", tm.focus.steam_app)
 hl.bind("ALT + C", hl.dsp.exec_cmd("alacritty"))
 
