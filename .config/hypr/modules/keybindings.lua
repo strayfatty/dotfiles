@@ -19,7 +19,7 @@ hl.bind("SUPER + ALT + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreenshot.
 -- core applications
 hl.bind("ALT + 1", hl.dsp.exec_cmd("~/.config/hypr/scripts/focusOrExec.sh -c Emacs emacs"))
 hl.bind("ALT + 2", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExec.sh -c \"google-chrome\" \"google-chrome-stable\""))
-hl.bind("ALT + 3", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"opencode\""))
+hl.bind("ALT + 3", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExec.sh -c \"t3code\" \"t3code\""))
 hl.bind("ALT + 4", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"lazygit\" \"lazygit\""))
 hl.bind("ALT + 7", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh --chrome -c \"chrome-www.amazon.de__-_en_gp_video_storefront-Default\" \"https://www.amazon.de/-/en/gp/video/storefront\""))
 hl.bind("ALT + 9", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExec.sh -c \"helium\" \"helium-browser\""))

@@ -23,7 +23,7 @@ hl.window_rule({
 hl.window_rule({
   name = "Coding Agent",
   match = {
-    initial_title = "opencode",
+    initial_class = "t3code",
   },
 
   workspace = "3",
@@ -36,6 +36,18 @@ hl.window_rule({
   },
 
   workspace = "4",
+})
+
+hl.window_rule({
+    name = "LazygitFloating",
+    match = {
+      initial_title = "lazygit-floating"
+    },
+
+    float = true,
+    center = true,
+    size = "(monitor_w*0.95) (monitor_h*0.9)",
+    animation = "none",
 })
 
 hl.window_rule({
