@@ -18,6 +18,7 @@ hl.bind("SUPER + ALT + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreenshot.
 
 -- core applications
 hl.bind("ALT + 1", tm.focus.emacs)
+hl.bind("SUPER + ALT + 1", hl.dsp.exec_cmd("~/.config/emacs/bin/doom run --debug-init"))
 hl.bind("ALT + 2", tm.focus.app("google-chrome-stable", { class = "google-chrome" }))
 hl.bind("ALT + 3", tm.focus.app("t3code"))
 hl.bind("ALT + 4", tm.focus.tui("lazygit"))
@@ -50,3 +51,9 @@ hl.bind("ALT + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
 hl.bind("ALT + SHIFT + 6", hl.dsp.window.move({ workspace = 6 }))
 hl.bind("ALT + SHIFT + 9", hl.dsp.window.move({ workspace = 9 }))
 hl.bind("ALT + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
+
+-- temporarily disable all keybinds
+hl.bind("CONTROL + ALT + SHIFT + K", hl.dsp.submap("clean"))
+hl.define_submap("clean", function()
+  hl.bind("CONTROL + ALT + SHIFT + K", hl.dsp.submap("reset"))
+end)
