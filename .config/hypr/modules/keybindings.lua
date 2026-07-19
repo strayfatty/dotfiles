@@ -13,9 +13,9 @@ hl.bind("SUPER + ALT + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind("ALT + SHIFT + F", hl.dsp.window.fullscreen())
 
 -- screenshot
-hl.bind("SUPER + CONTROL + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreenshot.sh -w"))
-hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreenshot.sh -r"))
-hl.bind("SUPER + ALT + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreenshot.sh -f"))
+hl.bind("SUPER + CONTROL + P", hl.dsp.exec_cmd("~/.config/hypr/scripts/takeScreenshot.sh -w"))
+hl.bind("SUPER + SHIFT + P", hl.dsp.exec_cmd("~/.config/hypr/scripts/takeScreenshot.sh -r"))
+hl.bind("SUPER + ALT + P", hl.dsp.exec_cmd("~/.config/hypr/scripts/takeScreenshot.sh -f"))
 
 -- core applications
 hl.bind("ALT + 1", tm.focus.emacs)
