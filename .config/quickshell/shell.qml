@@ -98,12 +98,20 @@ ShellRoot {
                             readonly property bool focused: Hyprland.focusedWorkspace !== null
                                 && Hyprland.focusedWorkspace.id === workspaceId
 
-                            width: 16
+                            width: focused ? 32 : 16
                             height: 16
                             radius: width / 2
                             color: workspaceMouse.containsMouse
                                 ? "#b2cbd3"
                                 : focused ? "#85d2e7" : "#1d343a"
+
+                            Behavior on width {
+                                NumberAnimation {
+                                    duration: 194
+                                    easing.type: Easing.BezierSpline
+                                    easing.bezierCurve: [0.5, 0.5, 0.75, 1, 1, 1]
+                                }
+                            }
 
                             Behavior on color {
                                 ColorAnimation {
