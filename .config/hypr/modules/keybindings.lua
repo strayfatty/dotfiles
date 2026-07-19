@@ -3,7 +3,8 @@ local tm = require("modules/tm")
 -------------------
 --- Keybindings ---
 -------------------
-hl.bind("SUPER + Q", hl.dsp.window.kill())
+hl.bind("SUPER + Q", hl.dsp.window.close())
+hl.bind("SUPER + SHIFT + Q", hl.dsp.window.kill())
 hl.bind("SUPER + TAB", hl.dsp.exec_cmd("rofi -show window"))
 hl.bind("SUPER + SPACE", hl.dsp.exec_cmd("rofi -show drun"))
 hl.bind("SUPER + SHIFT + M", hl.dsp.exit())
