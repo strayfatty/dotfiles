@@ -20,7 +20,7 @@ hl.bind("SUPER + ALT + P", hl.dsp.exec_cmd(".config/hypr/scripts/takeScreenshot.
 hl.bind("ALT + 1", tm.focus.emacs)
 hl.bind("ALT + 2", tm.focus.app("google-chrome-stable", { class = "google-chrome" }))
 hl.bind("ALT + 3", tm.focus.app("t3code"))
-hl.bind("ALT + 4", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"lazygit\" \"lazygit\""))
+hl.bind("ALT + 4", tm.focus.tui("lazygit"))
 hl.bind("ALT + 7", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh --chrome -c \"chrome-www.amazon.de__-_en_gp_video_storefront-Default\" \"https://www.amazon.de/-/en/gp/video/storefront\""))
 hl.bind("ALT + 9", tm.focus.app("helium-browser", { class = "helium" }))
 hl.bind("ALT + 0", tm.focus.app("steam"))
@@ -29,9 +29,9 @@ hl.bind("ALT + C", hl.dsp.exec_cmd("alacritty"))
 
 -- other applications
 hl.bind("SUPER + S", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh --chrome -c \"chrome-localhost__-Default\" \"http://localhost:8384\""))
-hl.bind("SUPER + A", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"wiremix\" \"wiremix\""))
-hl.bind("SUPER + M", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"rmpc\" \"rmpc\""))
-hl.bind("SUPER + T", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecTui.sh -T \"htop\" \"htop\""))
+hl.bind("SUPER + A", tm.focus.tui("wiremix"))
+hl.bind("SUPER + M", tm.focus.tui("rmpc"))
+hl.bind("SUPER + T", tm.focus.tui("htop"))
 hl.bind("SUPER + G", hl.dsp.exec_cmd(".config/hypr/scripts/focusOrExecWebApp.sh --chrome -t \"GoXLR Utility\" \"http://localhost:14564\""))
 
 hl.bind("CONTROL + ALT + SHIFT + W", hl.dsp.exec_cmd("killall -SIGUSR2 waybar"))
