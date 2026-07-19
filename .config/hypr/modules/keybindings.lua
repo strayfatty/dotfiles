@@ -1,4 +1,4 @@
-require("modules/tm")
+local tm = require("modules/tm")
 
 -------------------
 --- Keybindings ---

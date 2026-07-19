@@ -1,4 +1,4 @@
-tm = {}
+local tm = {}
 
 function tm.focus_direction(dir)
   return hl.dsp.focus({ direction = dir })
@@ -34,3 +34,5 @@ end
 
 -- function tm.focus_or_exec.by_initial_title()
 -- end
+
+return tm
