@@ -1,10 +1,34 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
+import QtQuick.Controls
 import Quickshell
 import Quickshell.Hyprland
+import Quickshell.Io
 
 ShellRoot {
+    id: shell
+
+    property string currentSubmap: "default"
+
+    Process {
+        command: ["hyprctl", "submap"]
+        running: true
+
+        stdout: StdioCollector {
+            onStreamFinished: shell.currentSubmap = text.trim()
+        }
+    }
+
+    Connections {
+        target: Hyprland
+
+        function onRawEvent(event) {
+            if (event.name === "submap")
+                shell.currentSubmap = event.data
+        }
+    }
+
     SystemClock {
         id: clock
         precision: SystemClock.Minutes
@@ -44,6 +68,8 @@ ShellRoot {
             // qmllint enable
 
             Rectangle {
+                id: clockPill
+
                 anchors {
                     top: parent.top
                     bottom: parent.bottom
@@ -71,6 +97,44 @@ ShellRoot {
                     anchors.fill: parent
                     cursorShape: Qt.PointingHandCursor
                     onClicked: panel.showingDate = !panel.showingDate
+                }
+            }
+
+            Rectangle {
+                id: submapPill
+
+                anchors {
+                    top: parent.top
+                    bottom: parent.bottom
+                    left: clockPill.right
+                    leftMargin: 10
+                }
+
+                implicitWidth: submapLabel.implicitWidth + 24
+                radius: height / 2
+                color: "#0f1416"
+                visible: shell.currentSubmap === "clean"
+
+                Text {
+                    id: submapLabel
+
+                    anchors.centerIn: parent
+                    anchors.verticalCenterOffset: 1
+                    text: "KEYS OFF"
+                    color: "#85d2e7"
+                    font.family: "Hack Nerd Font Mono"
+                    font.pixelSize: 14
+                    font.weight: Font.DemiBold
+                }
+
+                MouseArea {
+                    id: submapMouse
+
+                    anchors.fill: parent
+                    hoverEnabled: true
+
+                    ToolTip.visible: containsMouse
+                    ToolTip.text: `Temporary keybinding mode: ${shell.currentSubmap}`
                 }
             }
 
