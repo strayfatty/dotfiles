@@ -6,9 +6,9 @@ git:
     - master
     - main
     - develop
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --dark --paging=never --line-numbers
+      command: delta --dark --paging=never --line-numbers
 quitOnTopLevelReturn: false
 os:
   edit: nvim --server /tmp/nvim-server.pipe --remote-send "<cmd>lua require('tm.core.scripts.lazygit-open-file')('{{filename}}', '1')<CR>"
