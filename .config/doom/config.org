@@ -43,6 +43,12 @@ They all accept either a font-spec, font string ("Input Mono-12"), or xlfd font 
 #+BEGIN_SRC emacs-lisp
 (setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 18))
 #+END_SRC
+** Title
+Include project and file/buffer name in the title
+#+begin_src emacs-lisp
+(setq-default frame-title-format
+              '((:eval (projectile-project-name)) " - %b"))
+#+end_src
 ** Line Numbers
 This determines the style of line numbers in effect. If set to `nil', line numbers are disabled. For relative line numbers, set this to `relative'.
 #+BEGIN_SRC emacs-lisp

@@ -21,6 +21,9 @@
 
 (setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 18))
 
+(setq-default frame-title-format
+              '((:eval (projectile-project-name)) " - %b"))
+
 (setq display-line-numbers-type 'visual)
 
 (when-let (dims (doom-store-get 'last-frame-size))
