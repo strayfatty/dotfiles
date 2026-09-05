@@ -34,7 +34,7 @@ function focus.tui(application, initial_title)
     end
 
     hl.exec_cmd(
-      'alacritty -T "' .. initial_title .. '" -e "' .. application .. '"'
+      'ghostty +new-window -title "' .. initial_title .. '" -e "' .. application .. '"'
     )
   end
 end

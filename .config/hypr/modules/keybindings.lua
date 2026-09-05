@@ -27,7 +27,7 @@ hl.bind("ALT + 7", tm.focus.web_app("https://www.amazon.de/-/en/gp/video/storefr
 hl.bind("ALT + 9", tm.focus.app("helium-browser", { class = "helium" }))
 hl.bind("ALT + 0", tm.focus.app("steam"))
 hl.bind("ALT + minus", tm.focus.steam_app)
-hl.bind("ALT + C", hl.dsp.exec_cmd("alacritty"))
+hl.bind("ALT + C", hl.dsp.exec_cmd("ghostty +new-window"))
 
 -- other applications
 hl.bind("SUPER + S", tm.focus.web_app("http://localhost:8384", { class = "chrome-localhost__-Default" }))

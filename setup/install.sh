@@ -14,7 +14,7 @@ packages=(
     jq              # Command-line JSON processor
     bat             # Cat clone with syntax highlighting and git integration
     htop            # Interactive process viewer
-    alacritty       # A cross-platform, GPU-accelerated terminal emulator
+    ghostty         # Fast, native, feature-rich terminal emulator pushing modern features
     stow            # Manage installation of multiple softwares in the same directory tree
     wiremix         # A simple TUI audio mixer for PipeWire
     waybar          # Highly customizable Wayland bar for Sway and Wlroots based compositors
