@@ -39,6 +39,36 @@ hl.window_rule({
 })
 
 hl.window_rule({
+  name = "Prism Launcher",
+  match = {
+    class = "org[.]prismlauncher[.]PrismLauncher",
+  },
+
+  workspace = "5",
+})
+
+hl.window_rule({
+  name = "Minecraft",
+  match = {
+    class = "Minecraft.*",
+  },
+
+  workspace = "name:minecraft",
+  monitor = "DP-1",
+})
+
+hl.window_rule({
+  name = "Steam App",
+  match = {
+    class = "steam_app.*",
+  } ,
+
+  workspace = "name:steam_app",
+  monitor = "DP-1",
+  center = true,
+})
+
+hl.window_rule({
     name = "LazygitFloating",
     match = {
       initial_title = "lazygit-floating"

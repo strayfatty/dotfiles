@@ -55,13 +55,6 @@ function focus.web_app(url, filters)
   end
 end
 
-function focus.steam_app()
-  local window = hl.get_window("class:steam_app_.*")
-  if window then
-      hl.dispatch(hl.dsp.focus({ window = window }))
-  end
-end
-
 function focus.emacs()
   local lazygit = hl.get_window("initialtitle:lazygit-floating")
   if lazygit then
@@ -76,6 +69,40 @@ function focus.emacs()
   end
 
   hl.exec_cmd("emacs")
+end
+
+function focus.steam()
+  local game = hl.get_window("class:steam_app_.*");
+  local active = hl.get_active_window()
+
+  if game and (not active or active.address ~= game.address) then
+    hl.dispatch(hl.dsp.focus({ window = game }))
+    return
+  end
+
+  local launcher = hl.get_window("class:steam")
+  if launcher then
+    hl.dispatch(hl.dsp.focus({ window = launcher }))
+  else
+    hl.exec_cmd("steam")
+  end
+end
+
+function focus.minecraft()
+  local game = hl.get_window("class:Minecraft.*")
+  local active = hl.get_active_window()
+
+  if game and (not active or active.address ~= game.address) then
+    hl.dispatch(hl.dsp.focus({ window = game }))
+    return
+  end
+
+  local launcher = hl.get_window("class:org[.]prismlauncher[.]PrismLauncher")
+  if launcher then
+    hl.dispatch(hl.dsp.focus({ window = launcher }))
+  else
+    hl.exec_cmd("prismlauncher")
+  end
 end
 
 return focus

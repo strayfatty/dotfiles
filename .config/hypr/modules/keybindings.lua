@@ -24,9 +24,9 @@ hl.bind("ALT + 2", tm.focus.app("google-chrome-stable", { class = "google-chrome
 hl.bind("ALT + 3", tm.focus.app("t3code"))
 hl.bind("ALT + 4", tm.focus.tui("lazygit"))
 hl.bind("ALT + 7", tm.focus.web_app("https://www.amazon.de/-/en/gp/video/storefront", { class = "chrome-www.amazon.de__-_en_gp_video_storefront-Default" }))
+hl.bind("ALT + 8", tm.focus.minecraft)
 hl.bind("ALT + 9", tm.focus.app("helium-browser", { class = "helium" }))
-hl.bind("ALT + 0", tm.focus.app("steam"))
-hl.bind("ALT + minus", tm.focus.steam_app)
+hl.bind("ALT + 0", tm.focus.steam)
 hl.bind("ALT + C", hl.dsp.exec_cmd("ghostty +new-window"))
 
 -- other applications
